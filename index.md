@@ -8,16 +8,27 @@ Este repositorio contiene ejemplos y recursos organizados en tres apartados prin
 
 ## 🐳 1. Docker Compose
 
-Colección de ficheros `docker-compose.yml` para desplegar servicios básicos y combinados.
+Colección de ficheros `docker-compose.yml` para desplegar tanto servicios básicos como varios servicios combinados en un único fichero compose.
+
+Todos los servicios están conectados a una red externa denominada `shared_network`, por lo que antes de lanzar cualquiera de estos servicios será necesario tener creada esta red. En caso de no tenerla se debe crear esta red con la siguiente orden:
+
+```
+docker network create shared_network
+```
+
+Al compartir todos los servicios la misma red externa se pueden comunicar directamente cualesquiera dos servicios que se levanten utilizando la resolución local de nombres de Docker. Asimismo, cada servicio expone varios puertos en la máquina física.
+
+
+
  
-|   Nombre                                                     | Puertos expuestos        | Función del puerto                        |                                           |
-| ------------------------------------------------------------ | ------------------------ | ----------------------------------------- | ----------------------------------------- |
-| [**Redis**](./docker_compose/Redis/index.md)                 | 6379                     | Protocolo RESP                            | Base de datos clave-valor                 |
-| [**Neo4j**](./docker_compose/Neo4j/index.md)                 | 7074 <br> 7687           | Interfaz Web <br> Protocolo Bolt          | Base de datos orientada a grafos          |
-| [**Odoo + PostgreSQL**](./docker_compose/Odoo/index.md)      | 8069                     | Interfaz Web de Odoo                      | Entorno de trabajo Odoo                   |
-| [**MQTT Broker**](./docker_compose/mqtt_broker/index.md)     | 1883<br>9001<br>4000     | Protocolo MQTT<br>MQTT sobre WebSockets   | Broker MQTT con generación de datos simulados |
-| [**Jupyter Notebook**](./docker_compose/jupyter/index.md)    | 8888                     | Interfaz web de Jupyter                   | Notebook Python con librerías para ciencia de datos |
-| [**MongoDB + Express**]() | 27017<br>8081 | Conexiones a Mongo<br>Interfaz web de Mongo Express | Base de datos NoSQL de documentos con visor Web |
+|   Nombre                                                              |                                                     | Puertos expuestos        | Función del puerto                        |
+| --------------------------------------------------------------------- | --------------------------------------------------- | ------------------------ | ----------------------------------------- |
+| [**Redis**](./docker_compose/Redis/index.md)                          | Base de datos clave-valor                           | 6379                     | Protocolo RESP                            |
+| [**Neo4j**](./docker_compose/Neo4j/index.md)                          | Base de datos orientada a grafos                    | 7074 <br> 7687           | Interfaz Web <br> Protocolo Bolt          |
+| [**Odoo + PostgreSQL**](./docker_compose/Odoo/index.md)               | Entorno de trabajo Odoo                             | 8069                     | Interfaz Web de Odoo                      |
+| [**MQTT Broker**](./docker_compose/mqtt_broker/index.md)              | Broker MQTT con generación de datos simulados       | 1883<br>9001<br>4000     | Protocolo MQTT<br>MQTT sobre WebSockets   |
+| [**Jupyter Notebook**](./docker_compose/jupyter_notebook/index.md)    | Notebook Python con librerías para ciencia de datos | 8888                     | Interfaz web de Jupyter                   |
+| [**MongoDB + Express**]()                                             | Base de datos NoSQL de documentos con visor Web     | 27017<br>8081            | Conexiones a Mongo<br>Interfaz web de Mongo Express  |
 | **MinIO** |  |  |  |
 | **InfluxDB** |  |  |  |
 | **MinIO** |  |  |  |
