@@ -1,0 +1,27 @@
+services:
+  neo4j:
+    image: neo4j:5
+    container_name: neo4j
+    restart: unless-stopped
+    ports:
+      - "7474:7474"                         # interfaz web
+      - "7687:7687"                         # protocolo Bolt
+    environment:
+      - NEO4J_AUTH=neo4j/P@ssw0rd           # usuario/contraseña inicial
+    volumes:
+      - neo4j_data:/data                    # persistencia de datos
+      - neo4j_logs:/logs                    # logs de la base de datos
+      - neo4j_import:/var/lib/neo4j/import  # carpeta para importar archivos CSV
+      - neo4j_plugins:/plugins              # plugins opcionales
+    networks:
+      - shared-network
+
+volumes:
+  neo4j_data:
+  neo4j_logs:
+  neo4j_import:
+  neo4j_plugins:
+
+networks:
+  shared-network:
+    external: true

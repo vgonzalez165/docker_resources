@@ -1,0 +1,66 @@
+services:
+  mqtt-broker:
+    image: eclipse-mosquitto:2
+    container_name: iot-mqtt-broker
+    ports:
+      - "1883:1883"
+      - "9001:9001"  # WebSocket para herramientas web
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./mosquitto_data:/mosquitto/data
+      - ./mosquitto_log:/mosquitto/log
+    networks:
+      - shared-network
+
+  mqtt-explorer:
+    image: smeagolworms4/mqtt-explorer
+    container_name: mqtt-explorer
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mqtt-broker
+    networks:
+      - shared-network
+
+  sensor-simulator:
+    image: python:3.9-slim
+    container_name: iot-sensor-simulator
+    depends_on:
+      - mqtt-broker
+    working_dir: /app
+    volumes:
+      - ./sensor_simulator.py:/app/sensor_simulator.py
+      - ./requirements.txt:/app/requirements.txt
+    command: >
+      sh -c "pip install --no-cache-dir -r requirements.txt &&
+             python sensor_simulator.py"
+    environment:
+      - BROKER_HOST=mqtt-broker
+      - BROKER_PORT=1883
+      - TOPIC_PREFIX=iot/sensores
+    restart: unless-stopped
+    networks:
+      - shared-network
+
+  data-consumer:
+    image: python:3.9-slim
+    container_name: iot-data-consumer
+    depends_on:
+      - mqtt-broker
+    working_dir: /app
+    volumes:
+      - ./data_consumer.py:/app/data_consumer.py
+      - ./requirements.txt:/app/requirements.txt
+    command: >
+      sh -c "pip install --no-cache-dir -r requirements.txt &&
+             python data_consumer.py"
+    environment:
+      - BROKER_HOST=mqtt-broker
+      - BROKER_PORT=1883
+    restart: unless-stopped
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    external: true
