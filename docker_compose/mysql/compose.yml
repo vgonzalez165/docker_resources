@@ -1,33 +1,41 @@
 services:
-  mysql:
+  apache-php:
+    image: php:8.2-apache
+    container_name: apache_php
+    restart: always
+    volumes:
+      - ./www:/var/www/html   # Tu código PHP en ./www
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+
+  db:
     image: mysql:8.0
     container_name: mysql_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: paso
+      MYSQL_ROOT_PASSWORD: rootpass
       MYSQL_DATABASE: testdb
-      MYSQL_USER: user
-      MYSQL_PASSWORD: userpaso
+      MYSQL_USER: alumno
+      MYSQL_PASSWORD: alumnopass
     ports:
       - "3306:3306"
     volumes:
-      - ./mysql_data:/var/lib/mysql
-    networks:
-      - shared-network
+      - db_data:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     container_name: phpmyadmin_app
     restart: always
     environment:
-      PMA_HOST: mysql
+      PMA_HOST: db
       PMA_USER: root
-      PMA_PASSWORD: paso
+      PMA_PASSWORD: rootpass
     ports:
       - "8080:80"
     depends_on:
-      - mysql
+      - db
 
-networks:
-  shared-network:
-    external: true
+volumes:
+  db_data:
