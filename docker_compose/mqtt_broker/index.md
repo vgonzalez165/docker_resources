@@ -1,6 +1,6 @@
-# 📦 Entorno de Simulación IoT
+# Entorno de Simulación IoT
 
-## 📋 Resumen
+## Resumen
 
 Este fichero `docker-compose.yml` despliega un entorno de simulación IoT completo, con un broker de mensajería **MQTT** que actúa como punto central para la comunicación. El entorno incluye contenedores para un broker, un visualizador de mensajes y dos servicios de Python que simulan un sensor y un consumidor de datos. Este setup es ideal para ejercicios de ingesta de datos y desarrollo de aplicaciones IoT.
 
@@ -12,7 +12,7 @@ Este fichero `docker-compose.yml` despliega un entorno de simulación IoT comple
 | `data-consumer` | `python` | `3.9-slim` | - | `./data_consumer.py:/app/data_consumer.py`<br>`./requirements.txt:/app/requirements.txt` | `shared-network` |
 
 
-## 🛠️ Servicios definidos
+## Servicios definidos
 
   - **`mqtt-broker`** → Servidor de mensajería MQTT que gestiona el intercambio de mensajes entre los sensores y los consumidores.
   - **`mqtt-explorer`** → Herramienta visual para monitorear en tiempo real los mensajes que pasan por el broker.
@@ -20,19 +20,19 @@ Este fichero `docker-compose.yml` despliega un entorno de simulación IoT comple
   - **`data-consumer`** → Un script de Python que se suscribe a los tópicos y consume los datos enviados por el sensor.
 
 
-## 🌐 Puertos expuestos
+## Puertos expuestos
 
   * **`1883`** → Puerto estándar para la comunicación MQTT.
   * **`9001`** → Puerto para la comunicación MQTT sobre WebSockets, para clientes basados en navegador.
   * **`4000`** → Puerto para la interfaz web de la herramienta de monitoreo `mqtt-explorer`.
 
 
-## 🔑 Credenciales por defecto
+## Credenciales por defecto
 
 - No son necesarias credenciales
 
 
-## 💾 Volúmenes y persistencia
+## Volúmenes y persistencia
 
 | Ruta Host (local)      | Ruta Contenedor                    | Servicio          | Propósito |
 |------------------------|------------------------------------|-------------------|-----------|
@@ -45,7 +45,7 @@ Este fichero `docker-compose.yml` despliega un entorno de simulación IoT comple
 
 
 
-## 📝 Notas adicionales
+## Notas adicionales
 
 - El contenedor `mqtt-broker` ejecuta el script Python `sensor-simulator.py` que simula diversos sensores IoT. Sería conveniente mejorar este script para incluir más tipos de sensores.
 - El contenedor `data-consumer` simplemente ejecuta el script `data-consumer.py` a modo de ejemplo como consumidor de los datos generados por los sensores.

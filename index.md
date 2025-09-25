@@ -1,12 +1,12 @@
-# 📚 Índice del repositorio Docker
+# Índice del repositorio Docker
 
-Este repositorio contiene ejemplos y recursos organizados en tres apartados principales:
+Este repositorio contiene ejemplos y recursos para Docker organizados en tres apartados principales:
 
 - **Docker Compose** → ejemplos de despliegue de servicios.
-- **Dockerfiles personalizados** → contenedores preparados con configuraciones o datos extra.
+- **Dockerfiles personalizados** → contenedores preparados simulando servidores reales, por ejemplo, bases de datos con datos precargados.
 - **Recursos adicionales** → utilidades, notas y material de apoyo.
 
-## 🐳 1. Docker Compose
+## 1. Docker Compose
 
 Colección de ficheros `docker-compose.yml` para desplegar tanto servicios básicos como varios servicios combinados en un único fichero compose.
 
@@ -34,14 +34,14 @@ Al compartir todos los servicios la misma red externa se pueden comunicar direct
 | **MinIO** |  |  |  |
 
 
-## ⚙️ 2. Dockerfiles personalizados
+## 2. Dockerfiles personalizados
 
 Contenedores preparados con configuraciones específicas o datos precargados.
 
 - [Nginx con web estática precargada](./dockerfiles/nginx_estatica/index.md)
 - [MySQL con base de datos de empleados](./dockerfiles/mysql_employees/index.md)
 
-## 📦 3. Recursos adicionales
+## 3. Recursos adicionales
 
 Notas, tutoriales y utilidades relacionadas con Docker.
 

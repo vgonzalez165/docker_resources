@@ -1,6 +1,6 @@
-# 📦 Odoo / PostgreSQL
+# Odoo / PostgreSQL
 
-## 📋 Resumen
+## Resumen
 
 Este entorno despliega Odoo 16 + PostgreSQL 14 para desarrollo local: ideal para crear módulos, probar funcionalidades o aprender Odoo con datos persistentes.
 
@@ -12,18 +12,18 @@ Este entorno despliega Odoo 16 + PostgreSQL 14 para desarrollo local: ideal para
 
 
 
-## 🛠️ Servicios definidos
+## Servicios definidos
 
 - **odoo** → interfaz web de Odoo
 - **postgres** → base de datos relacional utilizada por Odoo
 
 
-## 🌐 Puertos expuestos
+## Puertos expuestos
 
 * `8069` → interfaz gráfica de Odoo
 
 
-## 🔑 Credenciales por defecto
+## Credenciales por defecto
 
 - **PostgreSQL**:
   - Usuario: `odoo`
@@ -34,7 +34,7 @@ Este entorno despliega Odoo 16 + PostgreSQL 14 para desarrollo local: ideal para
   - Contraseña: `paso`
 
 
-## 💾 Volúmenes y persistencia
+## Volúmenes y persistencia
 
 | Ruta Host (local)                 | Ruta Contenedor             | Servicio     | Propósito                                |
 |-----------------------------------|-----------------------------|--------------|------------------------------------------|
@@ -44,11 +44,11 @@ Este entorno despliega Odoo 16 + PostgreSQL 14 para desarrollo local: ideal para
 
 
 
-## 📂 Archivos relacionados
+## Archivos relacionados
 
 - [docker-compose.yml](./docker-compose.yml)
 
 
-## 📝 Notas adicionales
+## Notas adicionales
 
 - Eliminar el volumen `~/OdooDev/dataPG` borra toda la base de datos y la deja limpia.

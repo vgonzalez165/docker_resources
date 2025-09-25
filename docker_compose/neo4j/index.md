@@ -1,6 +1,6 @@
-# 📦 Neo4j
+# Neo4j
 
-## 📋 Resumen
+## Resumen
 
 Neo4j es una base de datos orientada a grafos diseñada para almacenar, consultar y analizar datos con relaciones complejas de forma eficiente. Utiliza un modelo en el que la información se representa mediante nodos y relaciones, facilitando consultas avanzadas sobre estructuras interconectadas como redes sociales, rutas y recomendaciones
 
@@ -11,24 +11,24 @@ Neo4j es una base de datos orientada a grafos diseñada para almacenar, consulta
 
 
 
-## 🛠️ Servicios definidos
+## Servicios definidos
 
 - **nep4j** → base de datos orienta a grafos Neo4j
 
 
-## 🌐 Puertos expuestos
+## Puertos expuestos
 
 - `7474` → Interfaz web de administración y consulta
 - `7687` → Puerto dedicado al protocolo Bolt para conexiones de clientes.
 
 
-## 🔑 Credenciales por defecto
+## Credenciales por defecto
 
 - **Neo4j**:
   - Usuario: `neo4j`
   - Contraseña: `P@ssw0rd`
 
-## 💾 Volúmenes y persistencia
+## Volúmenes y persistencia
 
 | Ruta Host (local)        | Ruta Contenedor         | Servicio     | Propósito                                |
 |--------------------------|-------------------------|--------------|------------------------------------------|
@@ -39,11 +39,11 @@ Neo4j es una base de datos orientada a grafos diseñada para almacenar, consulta
 
 
 
-## 📂 Archivos relacionados
+## Archivos relacionados
 
 - [docker-compose.yml](./docker-compose.yml)
 
 
-## 📝 Notas adicionales
+## Notas adicionales
 
 - 

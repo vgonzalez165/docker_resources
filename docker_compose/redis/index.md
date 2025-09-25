@@ -1,6 +1,6 @@
-# 📦 Redis Database
+# Redis Database
 
-## 📋 Resumen
+## Resumen
 
 Redis es una base de datos en memoria, de tipo clave–valor, diseñada para ser extremadamente rápida. A diferencia de bases de datos tradicionales que guardan los datos en disco, Redis los mantiene en RAM, lo que permite acceder a ellos en microsegundos.
 
@@ -12,22 +12,22 @@ Se utiliza principalmente como caché, cola de mensajes o para gestionar sesione
 | redis     | redis:7.2   | 7.2     | 6379:6379 | `redis-data:/data` `./redis.conf:/usr/local/etc/redis/redis.conf`      | shared_network |
 
 
-## 🛠️ Servicios definidos
+## Servicios definidos
 
 - **redis** → base de datos clave-valor
 
 
-## 🌐 Puertos expuestos
+## Puertos expuestos
 
 * `6379` → puerto que atiende las operaciones del protocolo propio de Redis (RESP - Redis Serialization Protocol)
 
 
-## 🔑 Credenciales por defecto
+## Credenciales por defecto
 
 - Sin credenciales
 
 
-## 💾 Volúmenes y persistencia
+## Volúmenes y persistencia
 
 | Ruta Host (local)                 | Ruta Contenedor             | Servicio     | Propósito                                |
 |-----------------------------------|-----------------------------|--------------|------------------------------------------|
@@ -36,14 +36,12 @@ Se utiliza principalmente como caché, cola de mensajes o para gestionar sesione
  |
 
 
-
-
-## 📂 Archivos relacionados
+## Archivos relacionados
 
 - [docker-compose.yml](./docker-compose.yml)
 
 
-## 📝 Notas adicionales
+## Notas adicionales
 
 
 
