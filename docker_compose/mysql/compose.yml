@@ -1,6 +1,7 @@
 services:
   apache-php:
-    image: php:8.2-apache
+    #image: php:8.2-apache
+    image: elki97413/pdo_mysql-php-apache:latest
     container_name: apache_php
     restart: always
     volumes:
