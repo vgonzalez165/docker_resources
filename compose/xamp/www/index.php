@@ -12,7 +12,7 @@ try {
     // Configurar atributos
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    echo "<h2>✅ Conexión exitosa a MySQL usando PDO</h2>";
+    echo "<h2>Conexión exitosa a MySQL usando PDO</h2>";
 
     // Crear tabla de prueba si no existe
     $pdo->exec("CREATE TABLE IF NOT EXISTS alumnos (
@@ -36,6 +36,6 @@ try {
     echo "</ul>";
 
 } catch (PDOException $e) {
-    echo "❌ Error de conexión: " . $e->getMessage();
+    echo "Error de conexión: " . $e->getMessage();
 }
 ?>
