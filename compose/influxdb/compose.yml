@@ -28,7 +28,6 @@ services:
         read_only: true
 
 secrets:
-
   influxdb2-admin-username:
     file: .env.influxdb2-admin-username
   influxdb2-admin-password:

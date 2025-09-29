@@ -29,9 +29,9 @@ Al compartir todos los servicios la misma red externa se pueden comunicar direct
 | [**MQTT Broker**](./compose/mqtt_broker/index.md)     | Broker MQTT con generación de datos simulados       | 1883<br>9001<br>4000     | Protocolo MQTT<br>MQTT sobre WebSockets   |
 | [**Jupyter Notebook**](./compose/jupyter/index.md)    | Notebook Python con librerías para ciencia de datos | 8888                     | Interfaz web de Jupyter                   |
 | [**MongoDB + Express**]()                             | Base de datos NoSQL de documentos con visor Web     | 27017<br>8081            | Conexiones a Mongo<br>Interfaz web de Mongo Express  |
-| [**XAMP**](./compose/xamp/index.md)                   | Entorno Web: Apache + MySQL + PHP                   | 80<br>8080               | Web desplegada en Apache<br>MPHPMyAdmin |
-| **MinIO** |  |  |  |
-| **InfluxDB** |  |  |  |
+| [**LAMP**](./compose/lamp/index.md)                   | Stack Web: Apache + MySQL + PHP                     | 80<br>8080               | Web desplegada en Apache<br>MPHPMyAdmin   |
+| **MinIO**                                             |                                                     |                          |                                           |
+| **InfluxDB**                                          |                                                     |                          |                                           |
 
 
 ## 2. Dockerfiles personalizados
