@@ -10,33 +10,41 @@ Este repositorio contiene ejemplos y recursos para Docker organizados en tres ap
 
 Colección de ficheros `docker-compose.yml` para desplegar tanto servicios básicos como varios servicios combinados en un único fichero compose.
 
-Todos los servicios están conectados a una red externa denominada `shared_network`, por lo que antes de lanzar cualquiera de estos servicios será necesario tener creada esta red. En caso de no tenerla se debe crear esta red con la siguiente orden:
+### Instrucciones
 
-```
-docker network create shared_network
-```
+Todos los servicios están conectados a una red externa denominada `shared_network`, por lo que antes de lanzar cualquiera de estos servicios será necesario tener creada esta red. En caso de no tenerla se debe crear esta red con la orden `
+docker network create shared_network`
 
 Al compartir todos los servicios la misma red externa se pueden comunicar directamente cualesquiera dos servicios que se levanten utilizando la resolución local de nombres de Docker. Asimismo, cada servicio expone varios puertos en la máquina física.
 
+Para levantar el entorno configurado en un fichero `compose` únicamente hay que ubicarse en el directorio que contiene dicho fichero y ejecutar la orden `docker compose up -d`.
 
-
+### Relación de ficheros `compose`
  
-|   Nombre                                              |                                                     | Puertos expuestos        | Función del puerto                        |
-| ----------------------------------------------------- | --------------------------------------------------- | ------------------------ | ----------------------------------------- |
-| [**Redis**](./compose/Redis/index.md)                 | Base de datos clave-valor                           | 6379                     | Protocolo RESP                            |
-| [**Neo4j**](./compose/Neo4j/index.md)                 | Base de datos orientada a grafos                    | 7074 <br> 7687           | Interfaz Web <br> Protocolo Bolt          |
-| [**Odoo + PostgreSQL**](./compose/Odoo/index.md)      | Entorno de trabajo Odoo                             | 8069                     | Interfaz Web de Odoo                      |
-| [**MQTT Broker**](./compose/mqtt_broker/index.md)     | Broker MQTT con generación de datos simulados       | 1883<br>9001<br>4000     | Protocolo MQTT<br>MQTT sobre WebSockets   |
+|   Nombre                                              |                                                              | Puertos expuestos        | Función del puerto                        |
+| ----------------------------------------------------- | ------------------------------------------------------------ | ------------------------ | ----------------------------------------- |
+| [**Registry + UI**]                                   | Registro privado de contenedores                             | 5000 <br> 8085           | Docker Registry <br> Interfaz Web         |
+| [**Redis**](./compose/Redis/index.md)                 | Base de datos clave-valor                                    | 6379                     | Protocolo RESP                            |
+| [**Neo4j**](./compose/Neo4j/index.md)                 | Base de datos orientada a grafos                             | 7074 <br> 7687           | Interfaz Web <br> Protocolo Bolt          |
+| [**Odoo + PostgreSQL**](./compose/Odoo/index.md)      | Entorno de trabajo Odoo                                      | 8069                     | Interfaz Web de Odoo                      |
+| [**MQTT Broker**](./compose/mqtt_broker/index.md)     | Broker MQTT con generación de datos simulados                | 1883<br>9001<br>4000     | Protocolo MQTT<br>MQTT sobre WebSockets   |
 | [**Jupyter Notebook**](./compose/jupyter_notebook/index.md)    | Notebook Python con librerías para ciencia de datos | 8888                     | Interfaz web de Jupyter                   |
-| [**MongoDB + Express**]()                             | Base de datos NoSQL de documentos con visor Web     | 27017<br>8081            | Conexiones a Mongo<br>Interfaz web de Mongo Express  |
-| [**LAMP**](./compose/lamp/index.md)                   | Stack Web: Apache + MySQL + PHP                     | 80<br>8080               | Web desplegada en Apache<br>MPHPMyAdmin   |
-| **MinIO**                                             |                                                     |                          |                                           |
-| **InfluxDB**                                          |                                                     |                          |                                           |
+| [**MongoDB + Express**]()                             | Base de datos NoSQL de documentos con visor Web              | 27017<br>8081            | Conexiones a Mongo<br>Interfaz web de Mongo Express  |
+| [**LAMP**](./compose/lamp/index.md)                   | Stack Web: Apache + MySQL + PHP                              | 80<br>8080               | Web desplegada en Apache<br>MPHPMyAdmin   |
+| **MinIO**                                             |                                                              |                          |                                           |
+| **InfluxDB**                                          |                                                              |                          |                                           |
 
 
 ## 2. Dockerfiles personalizados
 
-Contenedores preparados con configuraciones específicas o datos precargados.
+Pasos a realizar para crear imágenes de Docker con datos precargados, por ejemplo, servidores web que tengan una determinada página Web o sistemas gestores de bases de datos que contengan ya datos previamente cargados.
+
+### Instrucciones generales
+
+
+### Relación de contenedores
+
+- Servidor Nginx con web estática precargada
 
 - [Nginx con web estática precargada](./dockerfiles/nginx_estatica/index.md)
 - [MySQL con base de datos de empleados](./dockerfiles/mysql_employees/index.md)

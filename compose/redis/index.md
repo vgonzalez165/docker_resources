@@ -2,7 +2,7 @@
 
 ## Resumen
 
-Redis es una base de datos en memoria, de tipo clave–valor, diseñada para ser extremadamente rápida. A diferencia de bases de datos tradicionales que guardan los datos en disco, Redis los mantiene en RAM, lo que permite acceder a ellos en microsegundos.
+**Redis** es una base de datos en memoria, de tipo clave–valor, diseñada para ser extremadamente rápida. A diferencia de bases de datos tradicionales que guardan los datos en disco, Redis los mantiene en RAM, lo que permite acceder a ellos en microsegundos.
 
 Se utiliza principalmente como caché, cola de mensajes o para gestionar sesiones en aplicaciones web, pero también admite estructuras de datos avanzadas como listas, conjuntos, hashes o mapas ordenados.
 
