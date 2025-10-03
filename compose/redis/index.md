@@ -9,7 +9,7 @@ Se utiliza principalmente como caché, cola de mensajes o para gestionar sesione
 
 | Servicio  | Imagen      | Versión | Puertos   | Volúmenes                | Red     |
 |-----------|-------------|---------|-----------|--------------------------|---------|
-| redis     | redis:7.2   | 7.2     | 6379:6379 | `redis-data:/data` `./redis.conf:/usr/local/etc/redis/redis.conf`      | shared_network |
+| redis     | redis:7.2   | 7.2     | 6379:6379 | `redis-data:/data`<br>`./redis.conf:/usr/local/etc/redis/redis.conf`      | shared_network |
 
 
 ## Servicios definidos

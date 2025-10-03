@@ -23,7 +23,7 @@ Para levantar el entorno configurado en un fichero `compose` únicamente hay que
  
 |   Nombre                                              |                                                              | Puertos expuestos        | Función del puerto                        |
 | ----------------------------------------------------- | ------------------------------------------------------------ | ------------------------ | ----------------------------------------- |
-| [**Registry + UI**]                                   | Registro privado de contenedores                             | 5000 <br> 8085           | Docker Registry <br> Interfaz Web         |
+| [**Registry + UI**](./compose/registry/index.md)                                   | Registro privado de contenedores                             | 5000 <br> 8085           | Docker Registry <br> Interfaz Web         |
 | [**Redis**](./compose/redis/index.md)                 | Base de datos clave-valor                                    | 6379                     | Protocolo RESP                            |
 | [**Neo4j**](./compose/neo4j/index.md)                 | Base de datos orientada a grafos                             | 7074 <br> 7687           | Interfaz Web <br> Protocolo Bolt          |
 | [**Odoo + PostgreSQL**](./compose/odoo/index.md)      | Entorno de trabajo Odoo                                      | 8069                     | Interfaz Web de Odoo                      |
