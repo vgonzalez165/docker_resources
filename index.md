@@ -12,8 +12,7 @@ Colección de ficheros `docker-compose.yml` para desplegar tanto servicios bási
 
 ### Instrucciones
 
-Todos los servicios están conectados a una red externa denominada `shared_network`, por lo que antes de lanzar cualquiera de estos servicios será necesario tener creada esta red. En caso de no tenerla se debe crear esta red con la orden `
-docker network create shared_network`
+Todos los servicios están conectados a una red externa denominada `shared_network`, por lo que antes de lanzar cualquiera de estos servicios será necesario tener creada esta red. En caso de no tenerla se debe crear esta red con la orden `docker network create shared_network`
 
 Al compartir todos los servicios la misma red externa se pueden comunicar directamente cualesquiera dos servicios que se levanten utilizando la resolución local de nombres de Docker. Asimismo, cada servicio expone varios puertos en la máquina física.
 
@@ -27,9 +26,9 @@ Para levantar el entorno configurado en un fichero `compose` únicamente hay que
 | [**Redis**](./compose/redis/index.md)                 | Base de datos clave-valor                                    | 6379                     | Protocolo RESP                            |
 | [**Neo4j**](./compose/neo4j/index.md)                 | Base de datos orientada a grafos                             | 7074 <br> 7687           | Interfaz Web <br> Protocolo Bolt          |
 | [**Odoo + PostgreSQL**](./compose/odoo/index.md)      | Entorno de trabajo Odoo                                      | 8069                     | Interfaz Web de Odoo                      |
-| [**MQTT Broker**](./compose/mqtt_broker/index.md)     | Broker MQTT con generación de datos simulados                | 1883<br>9001<br>4000     | Protocolo MQTT<br>MQTT sobre WebSockets   |
+| [**MQTT Broker**](./compose/mqtt_broker/index.md)     | Broker MQTT con generación de datos simulados                | 1883<br>9001<br>4000     | Protocolo MQTT<br>MQTT sobre WebSockets<br>Interfaz web herramienta monitoreo   |
 | [**Jupyter Notebook**](./compose/jupyter_notebook/index.md)    | Notebook Python con librerías para ciencia de datos | 8888                     | Interfaz web de Jupyter                   |
-| [**MongoDB + Express**]()                             | Base de datos NoSQL de documentos con visor Web              | 27017<br>8081            | Conexiones a Mongo<br>Interfaz web de Mongo Express  |
+| [**MongoDB + Express**]()                             | Base de datos NoSQL de documentos con visor Web              | 27017<br>8081            | Conexiones a Mongo<br>Interfaz web de Express  |
 | [**LAMP**](./compose/lamp/index.md)                   | Stack Web: Apache + MySQL + PHP                              | 80<br>8080               | Web desplegada en Apache<br>MPHPMyAdmin   |
 | **MinIO**                                             |                                                              |                          |                                           |
 | **InfluxDB**                                          |                                                              |                          |                                           |

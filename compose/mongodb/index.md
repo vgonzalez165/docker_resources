@@ -1,6 +1,6 @@
-# 📦 MongoDB + Mongo Express
+# MongoDB + Mongo Express
 
-## 📋 Resumen
+## Resumen
 
 MongoDB es una base de datos **NoSQL orientada a documentos**, que almacena la información en formato BSON (JSON binario). Se caracteriza por su flexibilidad en el esquema, alta escalabilidad y rendimiento.
 
@@ -14,18 +14,18 @@ Este stack combina ambos servicios: la base de datos MongoDB y la interfaz de ad
 | mongo-express | mongo-express:1.0.2 | 1.0.2   | 8081:8081   | —                       | shared-network |
 
 
-## 🛠️ Servicios definidos
+## Servicios definidos
 
 * **mongo** → base de datos NoSQL orientada a documentos.
 * **mongo-express** → interfaz web para gestionar MongoDB.
 
 
-## 🌐 Puertos expuestos
+## Puertos expuestos
 
 * `27017` → puerto de conexión estándar de MongoDB.
 * `8081` → interfaz web de administración Mongo Express.
 
-## 🔑 Credenciales por defecto
+## Credenciales por defecto
 
 ### MongoDB
 
@@ -38,7 +38,7 @@ Este stack combina ambos servicios: la base de datos MongoDB y la interfaz de ad
 * **Contraseña web**: `secret`
 
 
-## 💾 Volúmenes y persistencia
+## Volúmenes y persistencia
 
 | Ruta Host (local) | Ruta Contenedor | Servicio | Propósito                                                                             |
 | ----------------- | --------------- | -------- | ------------------------------------------------------------------------------------- |
@@ -46,12 +46,13 @@ Este stack combina ambos servicios: la base de datos MongoDB y la interfaz de ad
 
 
 
-## 📂 Archivos relacionados
+## Archivos relacionados
 
-* [docker-compose.yml](./docker-compose.yml)
+* [compose.yml](./compose.yml)
+* [.env](./.env): fichero con las variables de entorno de Compose
 
 
-## 📝 Notas adicionales
+## Notas adicionales
 
 - El servicio `mongo-express` depende de que `mongo` esté sano. Para ello se define un **healthcheck** que comprueba la conexión ejecutando `db.runCommand("ping")`.
 - La red `shared-network` está definida como **externa**, por lo que debe existir previamente con:

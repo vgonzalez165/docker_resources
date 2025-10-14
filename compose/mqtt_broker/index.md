@@ -44,6 +44,16 @@ Este fichero `docker-compose.yml` despliega un entorno de simulación IoT comple
 | `./requirements.txt`   | `/app/requirements.txt`            | `sensor-simulator`<br>`data-consumer` | Contiene las dependencias de Python (ej. `paho-mqtt`) para que los servicios las instalen automáticamente. |
 
 
+## Archivos relacionados
+
+Todos estos archivos deben estar en el mismo directorio.
+
+- [docker-compose.yml](./compose.yml)
+- [mosquitto.conf](./mosquitto.conf): archivo de configuración de Mosquitto
+- [sensor_simulator.py](./sensor_simulator.py): programa Python que simula los datos generados por un sensor
+- [data_consumer-py](./data_consumer.py): programa Python que muestra el código de un consumidor de datos
+
+
 
 ## Notas adicionales
 

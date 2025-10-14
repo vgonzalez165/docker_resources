@@ -1,0 +1,38 @@
+services:
+
+  cassandra:
+    image: cassandra:${CASSANDRA_VERSION}
+    container_name: cassandra
+    restart: unless-stopped
+    ports:
+      - "${CASSANDRA_PORT}:9042"
+    environment:
+      - CASSANDRA_CLUSTER_NAME=${CASSANDRA_CLUSTER_NAME}
+      - CASSANDRA_DC=${CASSANDRA_DC}
+      - CASSANDRA_RACK=${CASSANDRA_RACK}
+      - CASSANDRA_NUM_TOKENS=256
+      - MAX_HEAP_SIZE=1G
+      - HEAP_NEWSIZE=200M
+    volumes:
+      - ./data:/var/lib/cassandra
+    networks:
+      - ${NETWORK_NAME}
+
+  datastax-studio:
+    image: datastax/dse-studio:latest
+    container_name: cassandra_studio
+    restart: unless-stopped
+    depends_on:
+      - cassandra
+    ports:
+      - "${STUDIO_PORT}:9091"
+    environment:
+      - DS_LICENSE=accept
+    networks:
+      - ${NETWORK_NAME}
+
+
+networks:
+  shared-network:
+    external: true
+    name: ${NETWORK_NAME:-shared-network}

@@ -41,7 +41,8 @@ Neo4j es una base de datos orientada a grafos diseñada para almacenar, consulta
 
 ## Archivos relacionados
 
-- [docker-compose.yml](./docker-compose.yml)
+- [docker-compose.yml](./compose.yml)
+- [redis.conf](./redis.conf)
 
 
 ## Notas adicionales
