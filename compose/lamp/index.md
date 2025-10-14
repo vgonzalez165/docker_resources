@@ -56,4 +56,4 @@ Este stack proporciona un entorno clásico de desarrollo web con **Apache + PHP*
 
 - La base de datos MySQL **no expone puertos al host**. Solo se accede mediante `phpmyadmin` o desde `apache-php`.
 - El proyecto PHP se debe montar en `./www` conectando hacia MySQL usando el host `db`
-- Sse ha utilizado la imagen `elki97413/pdo\_mysql-php-apache` ya que la imagen oficial no incluye por defecto PDO ni mysqli
+- Se ha utilizado la imagen `elki97413/pdo\_mysql-php-apache` ya que la imagen oficial no incluye por defecto PDO ni mysqli
