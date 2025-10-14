@@ -49,7 +49,7 @@ Este stack combina ambos servicios: la base de datos MongoDB y la interfaz de ad
 ## Archivos relacionados
 
 * [compose.yml](./compose.yml)
-* [.env](./.env): fichero con las variables de entorno de Compose
+* [.env](./env): fichero con las variables de entorno de Compose
 
 
 ## Notas adicionales
