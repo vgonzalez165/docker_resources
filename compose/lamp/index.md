@@ -39,7 +39,7 @@ Este stack proporciona un entorno clásico de desarrollo web con **Apache + PHP*
 - Accede usando las credenciales anteriores contra el servidor `db`.
 
 
-## 💾 Volúmenes y persistencia
+## Volúmenes y persistencia
 
 | Ruta Host (local) | Ruta Contenedor  | Servicio     | Propósito                                 |
 | ----------------- | ---------------- | ------------ | ----------------------------------------- |
@@ -49,7 +49,7 @@ Este stack proporciona un entorno clásico de desarrollo web con **Apache + PHP*
 
 ## Archivos relacionados
 
-- [docker-compose.yml](./docker-compose.yml)
+- [compose.yml](./compose.yml)
 
 
 ## Notas adicionales
