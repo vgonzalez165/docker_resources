@@ -35,7 +35,7 @@ Este entorno despliega un JupyterLab completo para ciencia de datos con Python. 
 
 ## Archivos relacionados
 
-- [docker-compose.yml](./docker-compose.yml)
+- [compose.yml](./compose.yml)
 
 
 ## Notas adicionales
