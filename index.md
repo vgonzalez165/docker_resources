@@ -30,6 +30,7 @@ Para levantar el entorno configurado en un fichero `compose` únicamente hay que
 | [**Jupyter Notebook**](./compose/jupyter_notebook/index.md)    | Notebook Python con librerías para ciencia de datos | 8888                     | Interfaz web de Jupyter                   |
 | [**MongoDB + Express**](./compose/mongodb/)                             | Base de datos NoSQL de documentos con visor Web              | 27017<br>8081            | Conexiones a Mongo<br>Interfaz web de Express  |
 | [**LAMP**](./compose/lamp/)                   | Stack Web: Apache + MySQL + PHP                              | 80<br>8080               | Web desplegada en Apache<br>MPHPMyAdmin   |
+| [**Clúster Hadoop**](./compose/hadoop_cluster/)        | Clúster Hadoop (con Jupyter)                                 |9870<br>8088<br>19888<br>7777<br>10000<br>1002| Interfaz Web de HDFS<br>Interfaz Web de Resource Manager<br>Interfaz Web de JobHistory Server<br>Interfaz Web de Jupyter<br>Conexión para cliente Hive<br>Conexión para cliente HiveServer2 |
 | **MinIO**                                             |                                                              |                          |                                           |
 | **InfluxDB**                                          |                                                              |                          |                                           |
 
