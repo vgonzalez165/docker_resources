@@ -46,7 +46,7 @@ Este entorno despliega Odoo 16 + PostgreSQL 14 para desarrollo local: ideal para
 
 ## Archivos relacionados
 
-- [docker-compose.yml](./docker-compose.yml)
+- [compose.yml](./compose.yml)
 
 
 ## Notas adicionales
