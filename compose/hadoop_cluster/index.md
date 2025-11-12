@@ -45,7 +45,7 @@ Se compone de un *NameNode* (que también ejecuta Jupyter/Hive), un *YARN Resour
 
 ## Archivos relacionados
 
-  - [docker-compose.yml](./docker-compose.yml)
+  - [compose.yml](./compose.yml)
 
 
 ## Notas adicionales
