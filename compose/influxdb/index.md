@@ -70,7 +70,7 @@ Estos ficheros deben crearse en el mismo directorio que el fichero `compose.yml`
 - `./flux-scripts/` → carpeta con consultas o scripts en lenguaje **Flux**.
 
 
-## 📝 Notas adicionales
+## Notas adicionales
 
 - Este stack crea automáticamente una organización y un bucket inicial llamados **`docs`** y **`home`** respectivamente.
 - Se puede acceder a la **interfaz web** en `http://localhost:8086` autenticándose con las credenciales configuradas.
