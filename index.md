@@ -33,7 +33,7 @@ Para levantar el entorno configurado en un fichero `compose` únicamente hay que
 | [**Clúster Hadoop**](./compose/hadoop_cluster/)       | Clúster Hadoop (con Jupyter)                                 | 9870<br>8088<br>19888<br>7777<br>10000<br>1002| Interfaz Web de HDFS<br>Interfaz Web de Resource Manager<br>Interfaz Web de JobHistory Server<br>Interfaz Web de Jupyter<br>Conexión para cliente Hive<br>Conexión para cliente HiveServer2 |
 | [**MySQL + PHPMyAdmin**](./compose/mysql/)            | Gestor de bases de datos MySQL con PHPMyAdmin                | 3306<br>8000 | Puerto estándar MySQL<br>Interfaz PHPMyAdmin |
 | **MinIO**                                             |                                                              |                          |                                           |
-| **InfluxDB**                                          |                                                              |                          |                                           |
+|[**InfluxDB**](./compose/influxdb/index.md)                                          |                                                              |                          |                                           |
 
 
 ## 2. Dockerfiles personalizados
