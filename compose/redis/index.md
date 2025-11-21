@@ -38,7 +38,8 @@ Se utiliza principalmente como caché, cola de mensajes o para gestionar sesione
 
 ## Archivos relacionados
 
-- [docker-compose.yml](./docker-compose.yml)
+- [compose.yml](./compose.yml)
+- [redis.conf](./redis.conf)
 
 
 ## Notas adicionales

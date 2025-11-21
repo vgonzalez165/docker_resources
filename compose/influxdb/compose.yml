@@ -26,6 +26,13 @@ services:
         source: ./flux-scripts
         target: /flux-scripts
         read_only: true
+    networks:
+      - shared-network
+      
+networks:
+  shared-network:
+    external: true
+
 
 secrets:
   influxdb2-admin-username:

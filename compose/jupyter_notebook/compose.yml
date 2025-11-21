@@ -9,6 +9,7 @@ services:
     working_dir: /home/jovyan/work
     networks:
       - shared-network
+      
 networks:
   shared-network:
     external: true
