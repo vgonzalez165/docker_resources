@@ -1,0 +1,46 @@
+services:
+  # 1. NODO MAESTRO
+  spark-master:
+    image: apache/spark:latest
+    container_name: spark-master
+    ports:
+      - "8080:8080" # Interfaz web de monitoreo
+      # - "7077:7077" # Puerto del master
+      - "4040:4040"
+      - "15002:15002"
+    environment:
+      - SPARK_MODE=master
+      - SPARK_PUBLIC_DNS=127.0.0.1
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no # Simplificación para desarrollo
+    command: [ "bash",  "-c", "/opt/spark/sbin/start-master.sh 
+                && /opt/spark/sbin/start-connect-server.sh
+                && tail -F /opt/spark/logs/*.out"]
+
+  # 2. NODO TRABAJADOR
+  spark-worker-1:
+    image: apache/spark:latest
+    container_name: spark-worker-1
+    ports:
+      - "8081:8081"
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_MEMORY=2g
+    command: [ "bash", "-c", "/opt/spark/sbin/start-worker.sh spark://spark-master:7077 && tail -F /opt/spark/logs/*.out" ]
+    depends_on:
+      - spark-master
+
+  # 3. CONTENEDOR DE CLIENTE/DRIVER (JupyterLab)
+  pyspark-notebook:
+    image: jupyter/pyspark-notebook # O tu propia imagen con Python y PySpark
+    container_name: pyspark-driver
+    ports:
+      - "8899:8888" # Puerto para acceder a Jupyter
+    environment:
+      # Indicamos al Driver dónde está el Master del cluster
+      - SPARK_MASTER=spark://spark-master:7077
+    volumes:
+      - ./notebooks:/home/jovyan/app # Monta tu código Python local
+    depends_on:
+      - spark-master
+      - spark-worker-1
