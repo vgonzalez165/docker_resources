@@ -1,13 +1,13 @@
 services:
   # 1. NODO MAESTRO
   spark-master:
-    image: apache/spark:latest
+    image: spark:3.5.0-scala2.12-java11-python3-ubuntu
     container_name: spark-master
     ports:
       - "8080:8080" # Interfaz web de monitoreo
-      # - "7077:7077" # Puerto del master
+      - "7077:7077" # Puerto del master
       - "4040:4040"
-      - "15002:15002"
+      # - "15002:15002"
     environment:
       - SPARK_MODE=master
       - SPARK_PUBLIC_DNS=127.0.0.1
@@ -18,7 +18,7 @@ services:
 
   # 2. NODO TRABAJADOR
   spark-worker-1:
-    image: apache/spark:latest
+    image: spark:3.5.0-scala2.12-java11-python3-ubuntu
     container_name: spark-worker-1
     ports:
       - "8081:8081"
@@ -26,21 +26,24 @@ services:
       - SPARK_MODE=worker
       - SPARK_WORKER_CORES=2
       - SPARK_WORKER_MEMORY=2g
-    command: [ "bash", "-c", "/opt/spark/sbin/start-worker.sh spark://spark-master:7077 && tail -F /opt/spark/logs/*.out" ]
+    command: [ "bash", "-c", "/opt/spark/sbin/start-worker.sh spark://spark-master:7077 
+                && tail -F /opt/spark/logs/*.out" ]
     depends_on:
       - spark-master
 
   # 3. CONTENEDOR DE CLIENTE/DRIVER (JupyterLab)
-  pyspark-notebook:
-    image: jupyter/pyspark-notebook # O tu propia imagen con Python y PySpark
-    container_name: pyspark-driver
+  jupyter-driver:
+    build: 
+      context: .             # Indica que el Dockerfile está en la misma carpeta
+      dockerfile: Dockerfile # El nombre del archivo que creamos arriba
+    container_name: jupyter-spark-driver
     ports:
-      - "8899:8888" # Puerto para acceder a Jupyter
+      - "8899:8888" # Acceso a Jupyter
+      # - "4040:4040" # Acceso a la UI de tu aplicación
     environment:
-      # Indicamos al Driver dónde está el Master del cluster
+      # Apuntamos al master definido arriba
       - SPARK_MASTER=spark://spark-master:7077
     volumes:
-      - ./notebooks:/home/jovyan/app # Monta tu código Python local
+      - ./work:/workspace # Monta tu carpeta local 'work' dentro del contenedor
     depends_on:
       - spark-master
-      - spark-worker-1
