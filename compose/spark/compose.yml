@@ -11,7 +11,7 @@ services:
     environment:
       - SPARK_MODE=master
       - SPARK_PUBLIC_DNS=127.0.0.1
-      - SPARK_RPC_AUTHENTICATION_ENABLED=no # Simplificación para desarrollo
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no 
     command: [ "bash",  "-c", "/opt/spark/sbin/start-master.sh 
                 && /opt/spark/sbin/start-connect-server.sh
                 && tail -F /opt/spark/logs/*.out"]
@@ -34,16 +34,15 @@ services:
   # 3. CONTENEDOR DE CLIENTE/DRIVER (JupyterLab)
   jupyter-driver:
     build: 
-      context: .             # Indica que el Dockerfile está en la misma carpeta
-      dockerfile: Dockerfile # El nombre del archivo que creamos arriba
+      context: .             
+      dockerfile: Dockerfile 
     container_name: jupyter-spark-driver
     ports:
-      - "8899:8888" # Acceso a Jupyter
-      # - "4040:4040" # Acceso a la UI de tu aplicación
+      - "8899:8888" 
+      # - "4040:4040" 
     environment:
-      # Apuntamos al master definido arriba
       - SPARK_MASTER=spark://spark-master:7077
     volumes:
-      - ./work:/workspace # Monta tu carpeta local 'work' dentro del contenedor
+      - ./notebooks:/workspace 
     depends_on:
       - spark-master

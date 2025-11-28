@@ -1,11 +1,11 @@
 # 1. Imagen base: Python 3.11 (Ligera y moderna)
-FROM python:3.8-slim
+FROM python:3.10-slim
 
 # 2. Variables de versión (AJUSTAR AQUÍ SI CAMBIAS EL CLUSTER)
 # Usamos Spark 3.5.0 para coincidir con tu clúster
 ENV SPARK_VERSION=3.5.7
 ENV HADOOP_VERSION=3
-ENV JAVA_VERSION=17
+ENV JAVA_VERSION=21
 
 # 3. Instalación de dependencias del sistema y JAVA (Obligatorio para Spark)
 # 'procps' es necesario para que Spark detecte procesos
