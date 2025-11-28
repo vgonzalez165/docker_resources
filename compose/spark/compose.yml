@@ -1,7 +1,7 @@
 services:
   # 1. NODO MAESTRO
   spark-master:
-    image: spark:3.5.0-scala2.12-java11-python3-ubuntu
+    image: spark:3.5.7-scala2.12-java11-python3-ubuntu
     container_name: spark-master
     ports:
       - "8080:8080" # Interfaz web de monitoreo
@@ -18,7 +18,7 @@ services:
 
   # 2. NODO TRABAJADOR
   spark-worker-1:
-    image: spark:3.5.0-scala2.12-java11-python3-ubuntu
+    image: spark:3.5.7-scala2.12-java11-python3-ubuntu
     container_name: spark-worker-1
     ports:
       - "8081:8081"

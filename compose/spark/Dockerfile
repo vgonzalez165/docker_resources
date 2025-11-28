@@ -3,7 +3,7 @@ FROM python:3.8-slim
 
 # 2. Variables de versión (AJUSTAR AQUÍ SI CAMBIAS EL CLUSTER)
 # Usamos Spark 3.5.0 para coincidir con tu clúster
-ENV SPARK_VERSION=3.5.0
+ENV SPARK_VERSION=3.5.7
 ENV HADOOP_VERSION=3
 ENV JAVA_VERSION=17
 
