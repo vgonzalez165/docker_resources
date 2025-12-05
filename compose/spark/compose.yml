@@ -8,6 +8,8 @@ services:
       - "7077:7077" # Puerto del master
       - "4040:4040"
       # - "15002:15002"
+    volumes:
+      - ./notebooks:/workspace 
     environment:
       - SPARK_MODE=master
       - SPARK_PUBLIC_DNS=127.0.0.1
@@ -24,8 +26,10 @@ services:
       - "8081:8081"
     environment:
       - SPARK_MODE=worker
-      - SPARK_WORKER_CORES=2
-      - SPARK_WORKER_MEMORY=2g
+      - SPARK_WORKER_CORES=8
+      - SPARK_WORKER_MEMORY=8g
+    volumes:
+      - ./notebooks:/workspace 
     command: [ "bash", "-c", "/opt/spark/sbin/start-worker.sh spark://spark-master:7077 
                 && tail -F /opt/spark/logs/*.out" ]
     depends_on:
@@ -39,7 +43,8 @@ services:
     container_name: jupyter-spark-driver
     ports:
       - "8899:8888" 
-      # - "4040:4040" 
+      - "4041:4040" 
+      - "9000:9000"
     environment:
       - SPARK_MASTER=spark://spark-master:7077
     volumes:

@@ -12,6 +12,10 @@ RUN apt-get update && \
     openjdk-${JAVA_VERSION}-jre-headless \
     curl \
     procps \
+    pandoc \
+    texlive-xetex \
+    texlive-fonts-recommended \
+    texlive-plain-generic \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
