@@ -12,6 +12,8 @@ services:
       - SPARK_MODE=master
       - SPARK_PUBLIC_DNS=127.0.0.1
       - SPARK_RPC_AUTHENTICATION_ENABLED=no 
+    volumes:
+      - ./notebooks:/workspace 
     command: [ "bash",  "-c", "/opt/spark/sbin/start-master.sh 
                 && /opt/spark/sbin/start-connect-server.sh
                 && tail -F /opt/spark/logs/*.out"]
@@ -26,6 +28,8 @@ services:
       - SPARK_MODE=worker
       - SPARK_WORKER_CORES=2
       - SPARK_WORKER_MEMORY=2g
+    volumes:
+      - ./notebooks:/workspace 
     command: [ "bash", "-c", "/opt/spark/sbin/start-worker.sh spark://spark-master:7077 
                 && tail -F /opt/spark/logs/*.out" ]
     depends_on:
