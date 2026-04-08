@@ -1,0 +1,16 @@
+{
+  "name": "Java y MySQL Accesible",
+  "dockerComposeFile": "../compose.yml",
+  "service": "java_dev",
+  "workspaceFolder": "/app",
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack"
+      ]
+    }
+  },
+  
+  "remoteUser": "root"
+}
