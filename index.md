@@ -36,6 +36,7 @@ Para levantar el entorno configurado en un fichero `compose` únicamente hay que
 | [**MySQL + PHPMyAdmin**](./compose/mysql/)            | Gestor de bases de datos MySQL con PHPMyAdmin                | 3306<br>8000 | Puerto estándar MySQL<br>Interfaz PHPMyAdmin |
 | **MinIO**                                             |                                                              |                          |                                           |
 |[**InfluxDB**](./compose/influxdb/index.md)                                          |                                                              |                          |                                           |
+|[**DOMJudge**](./compose/domjudge/index.md )                                          | **Pendiente**                                                              |                          |                                           |
 
 
 ## 2. Dockerfiles personalizados
