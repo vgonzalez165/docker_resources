@@ -1,0 +1,74 @@
+services:
+  domjudge-db:
+    image: mariadb:10.11
+    container_name: domjudge-db
+    cpuset: "0,4,5" # Usa los núcleos no aislados
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpw
+      - MYSQL_USER=domjudge
+      - MYSQL_PASSWORD=domjudgepw
+      - MYSQL_DATABASE=domjudge
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    restart: always
+
+  domjudge-domserver:
+    image: domjudge/domserver:latest
+    container_name: domjudge-domserver
+    cpuset: "0,4,5" # Comparte núcleos con la DB para no interferir con los jueces
+    depends_on:
+      - domjudge-db
+    ports:
+      - "8080:80"
+    environment:
+      - MYSQL_HOST=domjudge-db
+      - MYSQL_USER=domjudge
+      - MYSQL_PASSWORD=domjudgepw
+      - MYSQL_DATABASE=domjudge
+      - MYSQL_ROOT_PASSWORD=rootpw
+      - TZ=Europe/Madrid
+    volumes:
+      - ./data/domserver:/opt/domjudge/domserver/state
+    restart: always
+
+  judgehost-1:
+    image: domjudge/judgehost:latest
+    container_name: judgehost-1
+    privileged: true
+    cpuset: "1" # Núcleo físico 1 (aislado en GRUB)
+    environment:
+      - DOMSERVER_BASEURL=http://domjudge-domserver/
+      - JUDGEDAEMON_USERNAME=judgehost
+      - JUDGEDAEMON_PASSWORD=judgehostpw
+      - DAEMON_ARGS=-n 0
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    restart: always
+
+  judgehost-2:
+    image: domjudge/judgehost:latest
+    container_name: judgehost-2
+    privileged: true
+    cpuset: "2" # Núcleo físico 2 (aislado en GRUB)
+    environment:
+      - DOMSERVER_BASEURL=http://domjudge-domserver/
+      - JUDGEDAEMON_USERNAME=judgehost
+      - JUDGEDAEMON_PASSWORD=judgehostpw
+      - DAEMON_ARGS=-n 1
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    restart: always
+
+  judgehost-3:
+    image: domjudge/judgehost:latest
+    container_name: judgehost-3
+    privileged: true
+    cpuset: "3" # Núcleo físico 3 (aislado en GRUB)
+    environment:
+      - DOMSERVER_BASEURL=http://domjudge-domserver/
+      - JUDGEDAEMON_USERNAME=judgehost
+      - JUDGEDAEMON_PASSWORD=judgehostpw
+      - DAEMON_ARGS=-n 2
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    restart: always

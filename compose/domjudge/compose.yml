@@ -1,0 +1,79 @@
+services:
+  domjudge-db:
+    image: mariadb:10.11
+    container_name: domjudge-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpw
+      - MYSQL_USER=domjudge
+      - MYSQL_PASSWORD=domjudgepw
+      - MYSQL_DATABASE=domjudge
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    restart: always
+
+  domjudge-domserver:
+    image: domjudge/domserver:latest
+    container_name: domjudge-domserver
+    depends_on:
+      - domjudge-db
+    ports:
+      - "8080:80"
+    environment:
+      - MYSQL_HOST=domjudge-db
+      - MYSQL_USER=domjudge
+      - MYSQL_PASSWORD=domjudgepw
+      - MYSQL_DATABASE=domjudge
+      - MYSQL_ROOT_PASSWORD=rootpw
+    volumes:
+      - ./data/domserver:/opt/domjudge/domserver/state
+    restart: always
+
+  judgehost-1:
+    image: domjudge/judgehost:latest
+    container_name: judgehost-1
+    privileged: true
+    cpuset: "1" # <--- Atado al Core 1
+    environment:
+      - DOMSERVER_BASEURL=http://domjudge-domserver/
+      - JUDGEDAEMON_USERNAME=judgehost
+      - JUDGEDAEMON_PASSWORD=judgehostpw
+      - DAEMON_ARGS=-n 1
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    restart: always
+
+
+  judgehost-2:
+    image: domjudge/judgehost:latest
+    container_name: judgehost-2
+    privileged: true
+    cpuset: "2" # <--- Atado al Core 2
+    environment:
+      - DOMSERVER_BASEURL=http://domjudge-domserver/
+      - JUDGEDAEMON_USERNAME=judgehost
+      - JUDGEDAEMON_PASSWORD=judgehostpw
+      - DAEMON_ARGS=-n 1
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    restart: always
+
+
+  # domjudge-judgehost:
+  #   image: domjudge/judgehost:latest
+  #   container_name: domjudge-judgehost
+  #   privileged: true
+  #   # Intentamos la variante con guion bajo que algunos parsers prefieren
+  #   # Si esta también falla, bórrala y usa el Plan B de abajo
+  #   depends_on:
+  #     - domjudge-domserver
+  #   environment:
+  #     - DOMSERVER_BASEURL=http://domjudge-domserver/
+  #     - JUDGEDAEMON_USERNAME=judgehost
+  #     - JUDGEDAEMON_PASSWORD=judgehostpw
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  #   restart: always
+  #   entrypoint: >
+  #     bash -c "
+  #     mkdir -p /sys/fs/cgroup/memory &&
+  #     /scripts/start.sh"
