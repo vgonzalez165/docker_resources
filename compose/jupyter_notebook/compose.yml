@@ -7,8 +7,16 @@ services:
     volumes:
       - ./notebooks:/home/jovyan/work
     working_dir: /home/jovyan/work
+    
     networks:
       - shared-network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1 # Número de GPUs que quieres pasarle (en tu caso, 1)
+              capabilities: [gpu]
       
 networks:
   shared-network:
