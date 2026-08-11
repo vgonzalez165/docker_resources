@@ -1,0 +1,86 @@
+services:
+  namenode:
+    image: apache/hadoop:3.3.6
+    container_name: namenode
+    environment:
+      - CLUSTER_NAME=hadoop-cluster
+    ports:
+      - "9870:9870"   # Web UI NameNode
+      - "9000:9000"   # HDFS
+    volumes:
+      - namenode-data:/hadoop/dfs/name
+      - ./hadoop-conf:/opt/hadoop/etc/hadoop
+    command: ["hdfs", "namenode"]
+    networks:
+      - hadoop
+
+  datanode1:
+    image: apache/hadoop:3.3.6
+    container_name: datanode1
+    environment:
+      - SERVICE_PRECONDITION=namenode:9870
+    ports:
+      - "9864:9864"   # Web UI DataNode1
+    volumes:
+      - datanode1-data:/hadoop/dfs/data
+      - ./hadoop-conf:/opt/hadoop/etc/hadoop
+    depends_on:
+      - namenode
+    command: ["hdfs", "datanode"]
+    networks:
+      - hadoop
+
+  datanode2:
+    image: apache/hadoop:3.3.6
+    container_name: datanode2
+    environment:
+      - SERVICE_PRECONDITION=namenode:9870
+    ports:
+      - "9865:9864"   # Web UI DataNode2
+    volumes:
+      - datanode2-data:/hadoop/dfs/data
+      - ./hadoop-conf:/opt/hadoop/etc/hadoop
+    depends_on:
+      - namenode
+    command: ["hdfs", "datanode"]
+    networks:
+      - hadoop
+
+  resourcemanager:
+    image: apache/hadoop:3.3.6
+    container_name: resourcemanager
+    environment:
+      - SERVICE_PRECONDITION=namenode:9000 datanode1:9864 datanode2:9864
+    ports:
+      - "8088:8088"   # Web UI ResourceManager
+    volumes:
+      - ./hadoop-conf:/opt/hadoop/etc/hadoop
+    depends_on:
+      - namenode
+    command: ["yarn", "resourcemanager"]
+    networks:
+      - hadoop
+
+  nodemanager:
+    image: apache/hadoop:3.3.6
+    container_name: nodemanager
+    environment:
+      - SERVICE_PRECONDITION=resourcemanager:8088
+    ports:
+      - "8042:8042"   # Web UI NodeManager
+    volumes:
+      - ./hadoop-conf:/opt/hadoop/etc/hadoop
+    depends_on:
+      - resourcemanager
+    command: ["yarn", "nodemanager"]
+    networks:
+      - hadoop
+
+volumes:
+  namenode-data:
+  datanode1-data:
+  datanode2-data:
+
+networks:
+  hadoop:
+    driver: bridge

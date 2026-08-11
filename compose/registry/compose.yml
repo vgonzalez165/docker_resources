@@ -1,0 +1,41 @@
+services:
+  registry:
+    image: registry:2
+    container_name: registry
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      # Define dónde se almacenan los datos dentro del contenedor
+      REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
+      # Habilitar borrado de imágenes (requiere reiniciar para aplicarse)
+      REGISTRY_STORAGE_DELETE_ENABLED: "true"
+    volumes:
+      # Volumen persistente para que las imágenes no se pierdan
+      - registry-data:/var/lib/registry
+      # Opcional: configuración personalizada
+      - ./config.yml:/etc/docker/registry/config.yml:ro
+    networks:
+      - shared-network
+
+  registry-ui:  
+    image: joxit/docker-registry-ui:latest
+    container_name: registry-ui
+    restart: unless-stopped
+    ports:
+      - "8085:80"
+    environment:
+      - REGISTRY_TITLE=Registro Privado
+      - REGISTRY_URL=http://registry:5000
+      - DELETE_IMAGES=true   
+    depends_on:
+      - registry
+    networks:
+      - shared-network
+
+volumes:
+  registry-data:
+
+networks:
+  shared-network:
+    external: true
