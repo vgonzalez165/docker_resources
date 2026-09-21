@@ -38,6 +38,9 @@ Para levantar el entorno configurado en un fichero `compose` únicamente hay que
 |[**InfluxDB**](./compose/influxdb/index.md)                                          |                                           |                  |                      |
 |[**DOMJudge**](./compose/domjudge/index.md )           | **Pendiente**                                                              |                          |                                           |
 | [**Ollama - n8n**](./compose/ollama_n8n/index.md)     | Entorno de IA con motor de modelos (Ollama) y automatización de flujos de trabajo (n8n)  | 11434 <br> 5678 | Puerto API Local Ollama <br> Interfaz Web         |
+| [**Kanboard**](./compose/kanboard/index.md) | Gestor visual de tareas y proyectos basado en metodología Kanban | 8080 | Interfaz Web de Kanboard |
+| [**Focalboard + PostgreSQL**](./compose/focalboard/index.md) | Plataforma de gestión de proyectos y tableros con backend PostgreSQL | 8000 | Interfaz Web de Focalboard |
+| [**Minecraft Server**](./compose/minecraft/index.md) | Servidor de Minecraft (Paper) con soporte RCON | 25565 | Conexión de clientes Minecraft |
 
 ## 2. Dockerfiles personalizados
 
