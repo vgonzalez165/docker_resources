@@ -22,25 +22,36 @@ Para levantar el entorno configurado en un fichero `compose` únicamente hay que
  
 |   Nombre                                              |                                                              | Puertos expuestos        | Función del puerto                        |
 | ----------------------------------------------------- | ------------------------------------------------------------ | ------------------------ | ----------------------------------------- |
-| [**Registry + UI**](./compose/registry/index.md)                                   | Registro privado de contenedores                             | 5000 <br> 8085           | Docker Registry <br> Interfaz Web         |
+| **Bases de datos y almacenamiento**                   |                                                              |                          |                                           |
+| [**MySQL + PHPMyAdmin**](./compose/mysql/)            | Gestor de bases de datos MySQL con PHPMyAdmin                | 3306<br>8000 | Puerto estándar MySQL<br>Interfaz PHPMyAdmin |
+| [**MongoDB + Express**](./compose/mongodb/)           | Base de datos NoSQL de documentos con visor Web              | 27017<br>8081            | Conexiones a Mongo<br>Interfaz web de Express  |
 | [**Redis**](./compose/redis/index.md)                 | Base de datos clave-valor                                    | 6379                     | Protocolo RESP                            |
 | [**Neo4j**](./compose/neo4j/index.md)                 | Base de datos orientada a grafos                             | 7074 <br> 7687           | Interfaz Web <br> Protocolo Bolt          |
-| [**Odoo + PostgreSQL**](./compose/odoo/index.md)      | Entorno de trabajo Odoo                                      | 8069                     | Interfaz Web de Odoo                      |
-| [**MQTT Broker**](./compose/mqtt_broker/index.md)     | Broker MQTT con generación de datos simulados                | 1883<br>9001<br>4000     | Protocolo MQTT<br>MQTT sobre WebSockets<br>Interfaz web herramienta monitoreo   |
-| [**Jupyter Notebook**](./compose/jupyter_notebook/index.md)| Notebook Python con librerías para ciencia de datos     | 8888                     | Interfaz web de Jupyter                   |
-| [**MongoDB + Express**](./compose/mongodb/)           | Base de datos NoSQL de documentos con visor Web              | 27017<br>8081            | Conexiones a Mongo<br>Interfaz web de Express  |
-| [**LAMP**](./compose/lamp/)                           | Stack Web: Apache + MySQL + PHP                              | 80<br>8080               | Web desplegada en Apache<br>MPHPMyAdmin   |
+|[**InfluxDB**](./compose/influxdb/index.md)            |                                           |                  |                          |                                           |
+| MinIO                                                 |                                                              |                          |                                           |
+|                                                       |                                                              |                          |                                           |
+| **Big Data, Ciencia de datos e IA**                   |                                                              |                          |                                           |
 | [**Clúster Hadoop**](./compose/hadoop_cluster/)       | Clúster Hadoop (con Jupyter)                                 | 9870<br>8088<br>19888<br>7777<br>10000<br>1002| Interfaz Web de HDFS<br>Interfaz Web de Resource Manager<br>Interfaz Web de JobHistory Server<br>Interfaz Web de Jupyter<br>Conexión para cliente Hive<br>Conexión para cliente HiveServer2 |
 | [**Spark**](./compose/spark/)            | Spark con cliente Jupyter                | 8080<br>8081<br>7077<br>4040<br>8899 | Interfaz Web Spark Master<br>Interfaz Web Spark Worker<br>Puerto comunicación Master<br>Spark Context UI<br>Jupyter Lab |
-| [**Overleaf (Latex)**](./compose/latex/)              | Aplicación para edición de documentos Latex                | 8844 | Interfaz Web |
-| [**MySQL + PHPMyAdmin**](./compose/mysql/)            | Gestor de bases de datos MySQL con PHPMyAdmin                | 3306<br>8000 | Puerto estándar MySQL<br>Interfaz PHPMyAdmin |
-| **MinIO**                                             |                                                              |                          |                                           |
-|[**InfluxDB**](./compose/influxdb/index.md)                                          |                                           |                  |                      |
-|[**DOMJudge**](./compose/domjudge/index.md )           | **Pendiente**                                                              |                          |                                           |
+| [**Jupyter Notebook**](./compose/jupyter_notebook/index.md)| Notebook Python con librerías para ciencia de datos     | 8888                     | Interfaz web de Jupyter                   |
 | [**Ollama - n8n**](./compose/ollama_n8n/index.md)     | Entorno de IA con motor de modelos (Ollama) y automatización de flujos de trabajo (n8n)  | 11434 <br> 5678 | Puerto API Local Ollama <br> Interfaz Web         |
-| [**Kanboard**](./compose/kanboard/index.md) | Gestor visual de tareas y proyectos basado en metodología Kanban | 8080 | Interfaz Web de Kanboard |
-| [**Focalboard + PostgreSQL**](./compose/focalboard/index.md) | Plataforma de gestión de proyectos y tableros con backend PostgreSQL | 8000 | Interfaz Web de Focalboard |
-| [**Minecraft Server**](./compose/minecraft/index.md) | Servidor de Minecraft (Paper) con soporte RCON | 25565 | Conexión de clientes Minecraft |
+|                                                       |                                                              |                          |                                           |
+| **IoT, mensajería e ingesta**                         |                                                              |                          |                                           |
+| [**MQTT Broker**](./compose/mqtt_broker/index.md)     | Broker MQTT con generación de datos simulados                | 1883<br>9001<br>4000     | Protocolo MQTT<br>MQTT sobre WebSockets<br>Interfaz web herramienta monitoreo   |
+|                                                       |                                                              |                          |                                           |
+| **Soluciones empresariales**                          |                                                              |                          |                                           |
+| [**Kanboard**](./compose/kanboard/index.md)           | Gestor visual de tareas y proyectos basado en metodología Kanban     | 8080             | Interfaz Web de Kanboard                  |
+| [**Focalboard**](./compose/focalboard/index.md)       | Plataforma de gestión de proyectos y tableros con backend PostgreSQL | 8000             | Interfaz Web de Focalboard                |
+| [**Odoo + PostgreSQL**](./compose/odoo/index.md)      | Entorno de trabajo Odoo                                      | 8069                     | Interfaz Web de Odoo                      |
+| [**Overleaf (Latex)**](./compose/latex/)              | Aplicación para edición de documentos Latex                  | 8844                     | Interfaz Web                              |
+|                                                       |                                                              |                          |                                           |
+| **Desarrollo web y DevOps**                           |                                                              |                          |                                           |
+| [**LAMP**](./compose/lamp/)                           | Stack Web: Apache + MySQL + PHP                              | 80<br>8080               | Web desplegada en Apache<br>MPHPMyAdmin   |
+| [**Registry + UI**](./compose/registry/index.md)      | Registro privado de contenedores                             | 5000 <br> 8085           | Docker Registry <br> Interfaz Web         |
+|                                                       |                                                              |                          |                                           |
+| **Varios**               |                                                              |                          |                                           |
+| [**DOMJudge**](./compose/domjudge/index.md )          | **Pendiente**                                                |                          |                                           |
+| [**Minecraft Server**](./compose/minecraft/index.md)  | Servidor de Minecraft (Paper) con soporte RCON               | 25565                    | Conexión de clientes Minecraft            |
 
 ## 2. Dockerfiles personalizados
 
