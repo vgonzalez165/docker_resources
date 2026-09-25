@@ -53,6 +53,7 @@ Para levantar el entorno configurado en un fichero `compose` únicamente hay que
 | [**DOMJudge**](./compose/domjudge/index.md )          | **Pendiente**                                                |                          |                                           |
 | [**Minecraft Server**](./compose/minecraft/index.md)  | Servidor de Minecraft (Paper) con soporte RCON               | 25565                    | Conexión de clientes Minecraft            |
 
+
 ## 2. Dockerfiles personalizados
 
 Pasos a realizar para crear imágenes de Docker con datos precargados, por ejemplo, servidores web que tengan una determinada página Web o sistemas gestores de bases de datos que contengan ya datos previamente cargados.
