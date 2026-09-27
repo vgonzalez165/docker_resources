@@ -1,0 +1,19 @@
+services:
+  seaweedfs:
+    image: chrislusf/seaweedfs:latest
+    container_name: seaweedsfs
+    restart: unless-stopped
+    networks:
+      - shared-network
+    ports:
+      - "8333:8333"   # API S3
+      - "127.0.0.1:7777:8888"   # Consola / Filer
+    volumes:
+      - ./data:/data
+      - ./s3.json:/etc/seaweedfs/s3.json:ro
+    command: "server -filer -s3 -s3.config=/etc/seaweedfs/s3.json"
+
+networks:
+  shared-network:
+    external: true
+    name: ${DOCKER_NETWORK_NAME:-shared-network}

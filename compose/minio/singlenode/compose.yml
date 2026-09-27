@@ -1,17 +1,21 @@
 services:
   minio:
-    image: minio/minio
-    volumes:
-      - ./data:/data
-    ports:
-      - "${MINIO_PORT}:9000"
-      - "${MINIO_CONSOLE_PORT}:9001"
-    environment:
-      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
-      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
-      MINIO_ADDRESS: ${MINIO_ADDRESS}
-      MINIO_CONSOLE_ADDRESS: ${MINIO_CONSOLE_ADDRESS}
-    command: minio server /data
+      image: quay.io/minio/minio:latest
+      container_name: minio_corporativo
+      restart: unless-stopped
+      networks:
+        - shared-network
+      volumes:
+        - ./data:/data
+      ports:
+        - "${MINIO_PORT:-9000}:9000"
+        - "${MINIO_CONSOLE_PORT:-9001}:9001"
+      environment:
+        MINIO_ROOT_USER: ${MINIO_ROOT_USER:-admin_corporativo}
+        MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-ClaveSegura2026!}
+        MINIO_ADDRESS: ${MINIO_ADDRESS:-:9000}
+        MINIO_CONSOLE_ADDRESS: ${MINIO_CONSOLE_ADDRESS:-:9001}
+      command: server /data --console-address ":9001"
 
     
 networks:
