@@ -82,10 +82,11 @@ Al invocar /api/v1/urgencias/novedades, el microservicio entrega los eventos pen
 
 ## ARCHIVOS RELACIONADOS
 
-- **Dockerfile**: instrucciones de compilación del entorno Python y dependencias.
-- **docker-compose.yml**: orquestación del contenedor, mapeo de puertos y enlace de red.
-- **requirements.txt**: librerías mínimas requeridas (fastapi, uvicorn, pydantic).
-- **main.py**: código fuente del servidor, modelos Pydantic y lógica de generación.
+- [`Dockerfile`](./Dockerfile): instrucciones de compilación del entorno Python y dependencias.
+- [`compose.yml`](./compose.yml): orquestación del contenedor, mapeo de puertos y enlace de red.
+- [`requirements.txt`](./requirements.txt): librerías mínimas requeridas (fastapi, uvicorn, pydantic).
+- [`main.py`](./main.py): código fuente del servidor, modelos Pydantic y lógica de generación.
+- [`api_urgencias.zip`](./api_urgencias.zip): fichero comprimidos en formato ZIP
 
 ## CONSIDERACIONES OPERATIVAS Y DIDÁCTICAS
 

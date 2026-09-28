@@ -39,8 +39,8 @@ El control de permisos se gestiona a través de identidades definidas en el arch
 
 ## Archivos relacionados
 
-- `docker-compose.yml` → definición del servicio, puertos, mapeos y red compartida.
-- `s3.json` → definición de usuarios IAM y privilegios de lectura/escritura en buckets.
+- [`docker-compose.yml`](./compose.yml) → definición del servicio, puertos, mapeos y red compartida.
+- [`s3.json`](./s3.json) → definición de usuarios IAM y privilegios de lectura/escritura en buckets.
 - `./data/` → directorio local persistente en el host donde residen los datos físicos.
 
 ## Notas adicionales
