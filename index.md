@@ -62,7 +62,8 @@ Pasos a realizar para crear imágenes de Docker con datos precargados, por ejemp
 
 | Nombre                                         |                                                                                      |
 | ---------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [**API Urgencias Hospital**](./dockerfiles/api_urgencias/index.md) | API con datos sintéticos de altas y bajas de un servicio de urgencias de un hospital |
+| [**API Urgencias Hospital**](./dockerfiles/api_urgencias/index.md) | API con datos sintéticos de altas y bajas de un servicio de urgencias de un hospital. Reto 1 del módulo Sistemas de Big Data |
+| [**Web Urgencias Hospital**](./dockerfiles/web_urgencias/index.md) | Web con datos sintéticos de altas y bajas de servicio de urgencias. Reto 1 del módulo Sistemas de Big Data |
 
 
 

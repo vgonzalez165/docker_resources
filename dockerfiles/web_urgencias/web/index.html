@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Datos Clínicos - Práctica Hospitalaria</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f4f7f9;
+      color: #2c3e50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      max-width: 580px;
+      width: 100%;
+    }
+    h1 {
+      margin-top: 0;
+      color: #1a5276;
+      font-size: 1.5rem;
+    }
+    p {
+      line-height: 1.5;
+      color: #566573;
+    }
+    .dataset-list {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .dataset-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border: 1px solid #d5dbdb;
+      border-radius: 6px;
+      background: #fdfefe;
+    }
+    .dataset-info strong {
+      display: block;
+      color: #2c3e50;
+    }
+    .dataset-info span {
+      font-size: 0.85rem;
+      color: #7f8c8d;
+    }
+    .btn {
+      display: inline-block;
+      background: #2980b9;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .btn:hover {
+      background: #1f618d;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Sistema de Información Hospitalaria</h1>
+    <p>Descarga o consume directamente los conjuntos de datos asignados para la práctica de triaje y admisiones.</p>
+
+    <div class="dataset-list">
+      <div class="dataset-item">
+        <div class="dataset-info">
+          <strong>Histórico de Admisiones</strong>
+          <span>Formato: CSV (Estructurado)</span>
+        </div>
+        <a class="btn" href="admisiones_historico.csv" download>Descargar CSV</a>
+      </div>
+
+      <div class="dataset-item">
+        <div class="dataset-info">
+          <strong>Partes de Triaje de Urgencias</strong>
+          <span>Formato: JSON (Semiestructurado)</span>
+        </div>
+        <a class="btn" href="partes_clinicos.json" download>Descargar JSON</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
