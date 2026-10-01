@@ -7,6 +7,8 @@ services:
     ports:
       - "11434:11434"
     restart: unless-stopped
+    networks:
+      - shared-network
 
   n8n:
     image: n8nio/n8n:latest
@@ -23,7 +25,13 @@ services:
     depends_on:
       - ollama
     restart: unless-stopped
+    networks:
+      - shared-network
 
 volumes:
   ollama_data:
   n8n_data:
+
+networks:
+  shared-network:
+    external: true
