@@ -1,0 +1,59 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama_ia
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      # Guarda los modelos descargados en un volumen persistente de Docker Desktop
+      # para no tener que volver a bajarlos al apagar el ordenador
+      - ollama_modelos:/root/.ollama
+    environment:
+      # Permite conexiones desde Jupyter Notebook / navegador sin bloqueos CORS
+      - OLLAMA_ORIGINS=*
+      # Fija por defecto una ventana de contexto de 16k tokens para leer commits largos
+      - OLLAMA_CONTEXT_LENGTH=16384
+      # Optimizaciones de memoria VRAM para gráficas con 8GB - 16GB
+      - OLLAMA_FLASH_ATTENTION=1
+      - OLLAMA_KV_CACHE_TYPE=q8_0
+      # Tiempo que el modelo permanece cargado en la gráfica tras terminar (15 min)
+      - OLLAMA_KEEP_ALIVE=15m
+
+    networks:
+      - shared-network
+
+    # =========================================================================
+    # CONFIGURACIÓN DE TARJETA GRÁFICA (GPU NVIDIA EN DOCKER DESKTOP)
+    # -------------------------------------------------------------------------
+    # - Si el PC tiene gráfica NVIDIA (Windows con WSL2 o Linux), déjalo tal cual.
+    # - Si ejecutas esto en un PC SIN gráfica dedicada (solo CPU) o en un Mac,
+    #   comenta con '#' desde la línea 'deploy:' hasta 'capabilities: [gpu]'.
+    # =========================================================================
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+    # Descarga automáticamente el modelo qwen2.5-coder
+    entrypoint: >
+      /bin/sh -c "
+      ollama serve &
+      sleep 5 &&
+      echo 'Comprobando e instalando modelo para auditoría de código...' &&
+      ollama pull qwen2.5-coder:14b &&
+      wait
+      "
+
+
+volumes:
+  ollama_modelos:
+    name: ollama_modelos_persistentes
+
+
+networks:
+  shared-network:
+    external: true
