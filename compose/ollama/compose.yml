@@ -30,13 +30,13 @@ services:
     # - Si ejecutas esto en un PC SIN gráfica dedicada (solo CPU) o en un Mac,
     #   comenta con '#' desde la línea 'deploy:' hasta 'capabilities: [gpu]'.
     # =========================================================================
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #         - driver: nvidia
-    #           count: all
-    #           capabilities: [gpu]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
 
     # Descarga automáticamente el modelo qwen2.5-coder
     entrypoint: >
