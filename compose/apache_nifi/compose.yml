@@ -1,12 +1,13 @@
 services:
   nifi:
-    image: apache/nifi:1.28.1
+    image: apache/nifi:latest
     container_name: nifi
     hostname: nifi
     restart: unless-stopped
     ports:
       - "8443:8443" # Interfaz web HTTPS: https://localhost:8443/nifi
       - "9999:9999" # Puerto para prácticas de streaming por red (ListenTCP / ListenSyslog)
+      - "52020:52020"
     environment:
       # Credenciales (mínimo 12 caracteres en password)
       - SINGLE_USER_CREDENTIALS_USERNAME=admin
@@ -21,7 +22,7 @@ services:
       - ./hadoop-conf:/opt/nifi/nifi-current/hadoop-conf:ro
       - ./drivers:/opt/nifi/nifi-current/drivers:ro
       - ./logs-input:/opt/nifi/nifi-current/logs-input
-      # Persistencia de los flujos que diseñéis en el lienzo
+      # Persistencia de los flujos diseñados en el lienzo
       - nifi_conf:/opt/nifi/nifi-current/conf
       - nifi_state:/opt/nifi/nifi-current/state
     networks:
